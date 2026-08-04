@@ -31,9 +31,10 @@ Neither is selected per image — both are applied to every image with fixed
 settings and reported as two separate workflows. The count is the number of
 connected components surviving the area rule.
 
-The notebook reproduces the study's published per-image counts for the six
-sample images: scikit Bright matches all six exactly, and scikit Dim matches
-five of six (the 864 h image is discussed in the notebook).
+The notebook runs both workflows on the six sample images and compares their
+counts against the manual haemocytometer counts for the same images. Six images
+are a spot check, not a basis for comparing the workflows — the paper's
+agreement statistics are computed over the 72-image longitudinal dataset.
 
 To run it:
 
@@ -101,17 +102,14 @@ Six brightfield frames from a single suspension CHO culture (line S1), spanning
 864–1352 h of elapsed culture time — the six images of the descriptive
 segmentation audit (`Validation and Detailed audit` in Dataset S1).
 
-These are the cropped fields as analysed in the study, not raw frames, so the
-notebook's counts are directly comparable with the study's published per-image
-counts.
+These are the cropped fields as analysed in the study, not raw frames.
 
 ## Scope
 
-This repository is a reference implementation and a data record. It reproduces
-the published counts for the six sample images, but does not recompute the
-paper's summary statistics. Parameter selection, sensitivity analysis, and
-agreement against manual counts are reported in the paper and its supplementary
-materials.
+This repository is a reference implementation and a data record. It demonstrates
+the procedural workflows on six images; it does not recompute the paper's
+summary statistics. Parameter selection, sensitivity analysis, and the full
+agreement analysis are reported in the paper and its supplementary materials.
 
 ## License
 
