@@ -24,12 +24,16 @@ limits and whether a minimum-area exclusion is applied:
 
 | Workflow | Contrast limits | Smoothing | Threshold | Cleaning | Area exclusion |
 |---|---|---|---|---|---|
-| scikit Bright | 99th / 100th percentile | Gaussian, σ = 0.5 px | Otsu | closing + erosion, 1 px disk | none |
+| scikit Bright | 99th / 100th percentile | Gaussian, σ = 0.5 px | Otsu | closing + erosion, 1 px disk | components < 10 px removed |
 | scikit Dim | 98th / 99th percentile | Gaussian, σ = 0.5 px | Otsu | closing + erosion, 1 px disk | components < 80 px removed |
 
 Neither is selected per image — both are applied to every image with fixed
 settings and reported as two separate workflows. The count is the number of
 connected components surviving the area rule.
+
+The notebook reproduces the study's published per-image counts for the six
+sample images: scikit Bright matches all six exactly, and scikit Dim matches
+five of six (the 864 h image is discussed in the notebook).
 
 To run it:
 
@@ -97,16 +101,17 @@ Six brightfield frames from a single suspension CHO culture (line S1), spanning
 864–1352 h of elapsed culture time — the six images of the descriptive
 segmentation audit (`Validation and Detailed audit` in Dataset S1).
 
-These are **full frames**. The longitudinal analysis in the paper used cropped
-fields, so counts produced by the notebook are not the values reported in the
-paper's tables.
+These are the cropped fields as analysed in the study, not raw frames, so the
+notebook's counts are directly comparable with the study's published per-image
+counts.
 
 ## Scope
 
-This repository is a reference implementation and a data record, not a
-reproduction of the paper's statistics. Parameter selection, sensitivity
-analysis, and agreement against manual counts are reported in the paper and its
-supplementary materials.
+This repository is a reference implementation and a data record. It reproduces
+the published counts for the six sample images, but does not recompute the
+paper's summary statistics. Parameter selection, sensitivity analysis, and
+agreement against manual counts are reported in the paper and its supplementary
+materials.
 
 ## License
 
