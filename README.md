@@ -14,8 +14,6 @@ The study compares two fixed procedural segmentation variants (scikit Bright and
 | [`sample images/`](sample%20images/) | Six previously cropped brightfield images used in the descriptive segmentation audit |
 | [`LICENSE`](LICENSE) | Licence for the authors' released source code; see restrictions below |
 
-*If the uploaded count file has a different name, update the first link to match its exact path.*
-
 ## Complete 72-image count dataset
 
 `Image Counts.csv` contains one record for each of the four quadrant images at each of 18 timepoints. The columns include image name/path, elapsed time, artefact and development-image flags, manual haemocytometer counts, and the scikit Bright, scikit Dim and retrained Cellpose CP counts. The file also includes CCRE and absolute-count-error values.
