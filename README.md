@@ -34,9 +34,21 @@ The published tables report summary statistics for all 72 observations and for s
 
 ## Cell concentration and growth-curve metadata
 
-The original experimental records used the mean of four quadrant counts and the corresponding Trypan dilution factor:
+Cell concentrations were calculated from the mean haemocytometer count across four quadrants using:
 
-`cell concentration (cells/mL) = (Q1 + Q2 + Q3 + Q4) / 4 × dilution factor × 10,000`
+
+$$
+C(t) = \frac{\sum_{q=1}^{4} N_q(t)}{4} \times D(t) \times 10^4
+$$
+
+where:
+
+- $C(t)$ is the estimated cell concentration at time $t$ (cells/mL).
+- $N_q(t)$ is the cell count in quadrant $q$ at time $t$.
+- $D(t)$ is the corresponding Trypan dilution factor (2, 4, or 8).
+- $10^4$ is the standard haemocytometer volume conversion factor.
+
+The same conversion was applied to the manual reference counts and all three automated workflows. 
 
 | Exact elapsed time (h) | Dilution factor | Exact elapsed time (h) | Dilution factor |
 | ---: | ---: | ---: | ---: |
