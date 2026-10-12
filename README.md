@@ -91,13 +91,58 @@ The original model-development exercise took place in **2023** using **Cellpose 
 - Ten images were used to screen pretrained models; CP, cyto and cyto2 were shortlisted.
 - Four images were used for inference-parameter investigation. The **initial CP settings** selected at this stage were a diameter of 10 pixels, flow threshold 0.7, and cell-probability threshold 0.
 - **Five** separate images acquired at or before 840 h, containing approximately 200 cell regions, were used for sequential human-in-the-loop retraining of the **final CP model**. Training used 100 epochs per update, learning rate 0.1 and weight decay 0.0001.
-- After each CP training update, the recommended cell diameter was used for the following training image. The final **model-recommended** diameter was **19.99 pixels** after the fifth image. This value should not be confused with the initial 10-pixel setting; the original records do not conclusively identify how diameter selection was applied to every inference image.
+- After each CP training update, the recommended cell diameter was used for the following training image. The final **model-recommended** diameter was **19.99 pixels** after the fifth image. This value should not be confused with the initial 10-pixel setting.
 - Two **additional** images were used to investigate further training of cyto and cyto2, but **did not update the final CP model**. Those models were not selected for the 72-image evaluation.
 - No image used to update the final CP weights appears among the 72 evaluation images.
 
 The `Training` flag in Dataset S1 historically covers the broader seven-image model-development exercise. It should **not** be interpreted as seven images having trained the selected CP model. The corresponding CP-specific allocation is five images.
 
 The Cellpose workflow used the GUI; there is no separate custom inference script. **The trained CP weights and corrected training masks are not publicly included** because these materials are subject to third-party restrictions. Without the proprietary source images and model artefacts, the Cellpose segmentation itself cannot be re-executed exactly; count-level results can be examined using the released numerical data.
+
+
+## Dataset S1 — Image allocation and dataset roles
+
+[Dataset S1 - Image allocation and dataset roles.csv](./Dataset%20S1%20-%20Image%20allocation%20and%20dataset%20roles.csv) documents the image identities, acquisition timepoints, and roles of images used during workflow development and evaluation.
+
+### Column descriptions
+
+| Column | Description |
+|---|---|
+| `folder_bin` | Original timepoint folder identifier |
+| `Time elapsed (hours)` | Elapsed culture time at image acquisition |
+| `filename` | Original microscopy image filename |
+| `relative_path` | Image path within the original dataset |
+| `extension` | Image file extension |
+| `Manual Counts` | Indicates whether manual haemocytometer reference counts are available |
+| `Artefact (bubble, glare, shadow)` | Identifies images containing visual artefacts |
+| `Growth Curve Analysis` | Identifies the 72 images used in the longitudinal evaluation |
+| `Parameters` | Identifies the four images used for Cellpose parameter selection |
+| `Shortlist Creation` | Identifies the ten images used for pretrained-model screening |
+| `Training` | Identifies all seven images used in the broader Cellpose retraining investigation |
+| `CP Training` | Identifies the five images used specifically to update the final CP model weights |
+| `Validation and Detailed audit` | Identifies the six images used for the descriptive segmentation audit |
+
+### Training image allocation
+
+The historical `Training` column identifies seven images used during development of the shortlisted Cellpose models. Only five of these images were used to retrain the final CP model. The two additional images were used exclusively for further investigation of the cyto and cyto2 models.
+
+The `CP Training` column distinguishes the five final-model training images from the broader seven-image development set.
+
+None of the images marked `CP Training = Yes` is included in the 72-image longitudinal evaluation (`Growth Curve Analysis = Yes`).
+
+### Sensitivity-analysis subsets
+
+The allocation metadata permits reconstruction of the following datasets:
+
+| Dataset | Images | Definition |
+|---|---:|---|
+| Complete longitudinal evaluation | 72 | All images used for growth-curve analysis |
+| No-parameter-selection | 68 | Excludes the four parameter-selection images |
+| No-model-screening | 62 | Excludes all ten pretrained-model-screening images |
+| Artefact-excluded | 66 | Excludes the six images classified as containing artefacts |
+
+The reduced datasets were used to assess whether the inclusion of development images or images containing artefacts materially influenced the reported count-performance statistics.
+
 
 ## Sample images and data restrictions
 
